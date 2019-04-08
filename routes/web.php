@@ -21,7 +21,9 @@ Route::get('/seller/account/daily_sells_report', 'AccountIndiaController@showRep
 Route::get('/seller/account/money_transfer', 'AccountIndiaController@moneyTransfer')->name('account.moneyTransfer');
 
 Route::get('/seller/account/add_customer', 'AccountIndiaController@addCustomer')->name('account.addCustomer');
-Route::resource('/seller/account', 'AccountIndiaController');
+
+Route::get('/seller/account/add_daily_sells', 'AccountIndiaController@index')->name('account.index');
+Route::post('/seller/account/add_daily_sells', 'AccountIndiaController@storeDailySells');
 
 Route::get('/seller/inventory/confirm_shipment', 'InventoryController@confrimShipment')->name('inventory.confrimShipment');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AccountIndiaRequest;
+use Illuminate\Support\Facades\DB;
 
 class AccountIndiaController extends Controller
 {
@@ -16,6 +18,26 @@ class AccountIndiaController extends Controller
        return view('seller.account.add_daily_sells'); 
     }
 
+    public function storeDailySells(AccountIndiaRequest $req){
+
+        $total_amount = ($req->quantity*$req->rate);
+
+        $status = DB::table('daily_sells')->insert([
+            'sells_point_name' => $req->sells_point_name,
+            'product_name' => $req->product_name,
+            'quantity' => $req->quantity,
+            'rate' => $req->rate,
+            'customer_name' => $req->customer_name,
+            'ammount_paid' => $req->ammount_paid,
+            'ammount_left' => $req->ammount_left,
+            'total_amount' => $total_amount
+        ]);
+
+        if($status)
+        return back()->with('success','Daily sells stored successfully!!');
+        else
+        return back()->with('success','Oops!!Error occured while storing Daily sells!!');
+    }
 
         /**
      * Display a listing of the daily sells reports.
