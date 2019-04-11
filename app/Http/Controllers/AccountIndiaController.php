@@ -28,8 +28,8 @@ class AccountIndiaController extends Controller
             'quantity' => $req->quantity,
             'rate' => $req->rate,
             'customer_name' => $req->customer_name,
-            'ammount_paid' => $req->ammount_paid,
-            'ammount_left' => $req->ammount_left,
+            'amount_paid' => $req->amount_paid,
+            'amount_left' => $req->amount_left,
             'total_amount' => $total_amount
         ]);
 
@@ -65,6 +65,26 @@ class AccountIndiaController extends Controller
         return view('seller.account.money_transfer'); 
     }
 
+    public function storeMoneyTransferInfo(Request $req)
+    {
+        $req->validate([
+            'receiver_name'=>'required|exists:users,uname',
+            'amount'=>'required|numeric'
+        ]);
+
+        $status = DB::table('transferredIntoBD')
+                        ->insert([
+                            'receiver_name' => $req->receiver_name,
+                            'amount' => $req->amount,
+                            'transfer_date' => $req->transfer_date
+                        ]);
+
+        if($status)
+        return back()->with('success','Money Transfer Successfull.');
+        else
+        return back()->with('success','Oops!!Error occured while transferring money!!');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -75,47 +95,5 @@ class AccountIndiaController extends Controller
     {
         return view('seller.account.add_customer'); 
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

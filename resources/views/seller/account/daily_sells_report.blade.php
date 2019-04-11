@@ -74,7 +74,7 @@ h2,h3{
                             @endif
 
                         <div class="col-xs-12">
-                            <a href="http://" class="btn btn-block btn-danger">Back</a>
+                        <a href="{{route('seller.index')}}" class="btn btn-block btn-danger">Back</a>
                         </div>
 
 

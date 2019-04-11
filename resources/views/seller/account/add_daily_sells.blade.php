@@ -73,11 +73,11 @@
                       </div>
 
                       <div class="form-group">
-                          <input type="number" min="0" class="form-control" name="ammount_paid" placeholder="Ammount paid" value="{{old('ammount_paid')}}">
+                          <input type="number" min="0" class="form-control" name="amount_paid" placeholder="Ammount paid" value="{{old('amount_paid')}}">
                       </div>
 
                       <div class="form-group">
-                          <input type="number" min="0" class="form-control" name="ammount_left" placeholder="Ammount left" value="{{old('ammount_left')}}">
+                          <input type="number" min="0" class="form-control" name="amount_left" placeholder="Ammount left" value="{{old('amount_left')}}">
                       </div>
 
                       <div class="form-group">

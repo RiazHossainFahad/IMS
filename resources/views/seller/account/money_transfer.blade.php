@@ -25,19 +25,37 @@
                         <h3 style="text-align:center" class="panel-title">Status Of Money Transferred</h3>
                     </div>
                     <div class="panel-body">
+
+                            @if (count($errors))
+                            <div class="alert alert-danger">
+                             <button type="button" class="close" data-dismiss="alert">×</button>
+                             <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                 @endforeach
+                               </ul>
+                            </div>
+                           @endif
+                           @if ($message = Session::get('success'))
+                           <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                   <strong>{{ $message }}</strong>
+                           </div>
+                           @endif
+
                         <form method="post">
-
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="reciever_name" placeholder="Receiver name">
+                                <input type="text" class="form-control" name="receiver_name" placeholder="Receiver name" value="{{old('receiver_name')}}">
                             </div>
 
 
                             <div class="form-group">
-                                <input type="number" min="1" class="form-control" name="ammount" placeholder="Ammount">
+                                <input type="number" min="1" class="form-control" name="amount" placeholder="Amount" value="{{old('amount')}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" min="0" class="form-control" name="date" placeholder="Date">
+                                <input type="text" readonly class="form-control" name="transfer_date" placeholder="Date" value="{{now()->toDateString('Y-m-d')}}">
                             </div>
 
                             <div class="form-group">

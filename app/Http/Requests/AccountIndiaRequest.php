@@ -29,8 +29,8 @@ class AccountIndiaRequest extends FormRequest
             'quantity'=>'required',
             'rate'=>'required',
             'customer_name'=>'required',
-            'ammount_paid'=>'required',
-            'ammount_left'=>'required',
+            'amount_paid'=>'required',
+            'amount_left'=>'required',
         ];
     }
 }
