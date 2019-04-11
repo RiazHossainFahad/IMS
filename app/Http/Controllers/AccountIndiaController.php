@@ -96,4 +96,27 @@ class AccountIndiaController extends Controller
         return view('seller.account.add_customer'); 
     }
 
+    public function storeCustomerInfo(Request $req)
+    {
+        $req->validate([
+            'customer_name'=>'required|unique:customers',
+            'customer_address'=>'required',
+            'customer_email'=>'required|unique:customers',
+            'customer_pass'=>'required',
+        ]);
+    
+        $status = DB::table('customers')
+                        ->insert([
+                            'customer_name' => $req->customer_name,
+                            'customer_email' => $req->customer_email,
+                            'customer_address' => $req->customer_address,
+                            'customer_pass' => $req->customer_pass
+                        ]);
+
+        if($status)
+        return back()->with('success','Account Created Successfully.');
+        else
+        return back()->with('success','Oops!!Error occured while creating account!!');
+    }
+
 }

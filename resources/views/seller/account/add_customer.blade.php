@@ -24,26 +24,40 @@
                         <h3 style="text-align:center" class="panel-title">Create Customer Account</h3>
                     </div>
                     <div class="panel-body">
+
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                             <button type="button" class="close" data-dismiss="alert">×</button>
+                             <ul>
+                              @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                              @endforeach
+                             </ul>
+                            </div>
+                           @endif
+                           @if ($message = Session::get('success'))
+                           <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                   <strong>{{ $message }}</strong>
+                           </div>
+                           @endif
+
                         <form method="post">
-
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="customer_name" placeholder="Customer name">
+                            <input type="text" class="form-control" name="customer_name" placeholder="Customer name" value="{{old('customer_name')}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="email" class="form-control" name="customer_email" placeholder="Customer Email">
+                                <input type="email" class="form-control" name="customer_email" placeholder="Customer Email" value="{{old('customer_email')}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" name="customer_address" placeholder="Customer address">
+                                <input type="text" class="form-control" name="customer_address" placeholder="Customer address" value="{{old('customer_address')}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="number" min="0" class="form-control" name="balance" placeholder="Balance">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="Password" class="form-control" name="customer_pass" placeholder="Password">
+                                <input type="Password" class="form-control" name="customer_pass" placeholder="Password" value="{{old('customer_pass')}}">
                             </div>
 
                             <div class="form-group">

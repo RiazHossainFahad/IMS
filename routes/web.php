@@ -23,6 +23,7 @@ Route::group(['middleware' => 'authSession'], function () {
  Route::post('/seller/account/money_transfer', 'AccountIndiaController@storeMoneyTransferInfo');
  
  Route::get('/seller/account/add_customer', 'AccountIndiaController@addCustomer')->name('account.addCustomer');
+ Route::post('/seller/account/add_customer', 'AccountIndiaController@storeCustomerInfo');
  
  Route::get('/seller/account/add_daily_sells', 'AccountIndiaController@index')->name('account.index');
  Route::post('/seller/account/add_daily_sells', 'AccountIndiaController@storeDailySells');

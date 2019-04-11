@@ -24,11 +24,11 @@ class AccountIndiaRequest extends FormRequest
     public function rules()
     {
         return [
-            'sells_point_name'=>'required|String',
+            'sells_point_name'=>'required',
             'product_name'=>'required',
             'quantity'=>'required',
             'rate'=>'required',
-            'customer_name'=>'required',
+            'customer_name'=>'required|exists:customers',
             'amount_paid'=>'required',
             'amount_left'=>'required',
         ];
