@@ -16,8 +16,8 @@ class LoginController extends Controller
                     ->where('uname','=',$req->uname)
                     ->where('pass','=',$req->pass)
                     ->first();
-        session(['id'=>$user->id, 'uname'=> $user->uname]);
         if($user){
+            session(['user' => $user]);
             return redirect()->route('seller.index');
         }else{
             return back()->with('success', 'Invalid User!');

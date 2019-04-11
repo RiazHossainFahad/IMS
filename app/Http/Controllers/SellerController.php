@@ -14,7 +14,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $data = DB::table('users')->where('uname','=',session('uname'))->first();
+        $data = DB::table('users')->where('id','=',session('user')->id)->first();
         return view('seller.index')->with('user',$data);
     }
 
