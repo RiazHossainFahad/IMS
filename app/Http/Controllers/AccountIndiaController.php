@@ -47,7 +47,12 @@ class AccountIndiaController extends Controller
 
     public function showReport()
     {
-       return view('seller.account.daily_sells_report'); 
+       $today_sells = DB::table('daily_sells')
+                            ->whereDate('created_at','=',now()->toDateString('Y-m-d'))
+                            ->get();
+        return view('seller.account.daily_sells_report')->with('daily_sells',$today_sells); 
+    //echo now()->toDateString('Y-m-d');
+    //print_r($today_sells);
     }
 
     /**

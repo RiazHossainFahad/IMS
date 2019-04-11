@@ -20,8 +20,8 @@ class CreateDailySellsTable extends Migration
             $table->integer('quantity');
             $table->double('rate');
             $table->string('customer_name');
-            $table->double('ammount_paid');
-            $table->double('ammount_left');
+            $table->double('amount_paid');
+            $table->double('amount_left');
             $table->double('total_amount');
             $table->timestamps();
         });

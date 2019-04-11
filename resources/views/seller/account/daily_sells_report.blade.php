@@ -14,6 +14,9 @@ th {
     background-color: rgb(95, 85, 231);
     color: #fff;
 }
+h2,h3{
+    text-align: center;
+}
 @endsection
 
 @section('accountModule')
@@ -34,37 +37,41 @@ th {
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 style="text-align:center" class="panel-title">Daily Sells Report</h3>
+                        <h3 class="panel-title">Daily Sells Report</h3>
                     </div>
                     <div class="panel-body">
-
-                        <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Sl No</th>
-                                    <th>Customer Name</th>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Rate</th>
-                                    <th>Total Ammount</th>
-                                    <th>Ammount Paid</th>
-                                    <th>Ammount Left</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>XYZ</td>
-                                    <td>2019</td>
-                                    <td>10000</td>
-                                    <td>10000</td>
-                                    <td>10000</td>
-                                    <td>10000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
+                            @if (count($daily_sells))
+                            <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Sell ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Rate</th>
+                                            <th>Total Ammount</th>
+                                            <th>Ammount Paid</th>
+                                            <th>Ammount Left</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($daily_sells as $sells)
+                                        <tr>
+                                        <td>{{$sells->id}}</td>
+                                                <td>{{$sells->customer_name}}</td>
+                                                <td>{{$sells->product_name}}</td>
+                                                <td>{{$sells->quantity}}</td>
+                                                <td>{{$sells->rate}}</td>
+                                                <td>{{$sells->total_amount}}</td>
+                                                <td>{{$sells->amount_paid}}</td>
+                                                <td>{{$sells->amount_left}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>   
+                            @else
+                            <h2>There is no sells yet for today</h2>
+                            @endif
 
                         <div class="col-xs-12">
                             <a href="http://" class="btn btn-block btn-danger">Back</a>
