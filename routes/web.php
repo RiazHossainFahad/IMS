@@ -17,14 +17,15 @@ Route::post('/','LoginController@check');
 Route::group(['middleware' => 'authSession'], function () {
  Route::get('/seller', 'SellerController@index')->name('seller.index');
 
- Route::get('/seller/account/daily_sells_report', 'AccountIndiaController@showReport')->name('account.showReport');
  /*
-|--------------------------------------------------------------------------
-| Account India module Routes
-|--------------------------------------------------------------------------
-|
+ |--------------------------------------------------------------------------
+ | Account India module Routes
+ |--------------------------------------------------------------------------
+ |
  */
- Route::get('/seller/account/money_transfer', 'AccountIndiaController@moneyTransfer')->name('account.moneyTransfer');
+Route::get('/seller/account/daily_sells_report', 'AccountIndiaController@showReport')->name('account.showReport');
+
+Route::get('/seller/account/money_transfer', 'AccountIndiaController@moneyTransfer')->name('account.moneyTransfer');
  Route::post('/seller/account/money_transfer', 'AccountIndiaController@storeMoneyTransferInfo');
  
  Route::get('/seller/account/add_customer', 'AccountIndiaController@addCustomer')->name('account.addCustomer');
@@ -48,6 +49,31 @@ Route::group(['middleware' => 'authSession'], function () {
  Route::get('/seller/inventory/product_info_report', 'InventoryController@productInfoReport')->name('inventory.productInfoReport');
  
  Route::get('/seller/inventory/shipment_report', 'InventoryController@shipmentReport')->name('inventory.shipmentReport'); 
+
+
+ /*
+|--------------------------------------------------------------------------
+| Bangladesh Admin module Routes
+|--------------------------------------------------------------------------
+|
+ */
+Route::get('/BD_Admin', 'BDAdminController@index')->name('bdAdmin.index');
+ 
+
+ /*
+|--------------------------------------------------------------------------
+| Bangladesh Admin-Factory module Routes
+|--------------------------------------------------------------------------
+|
+ */
+Route::get('/BD_Admin/factory/add_factory', 'FactoryManagementController@addFactory')->name('factory.addFactory');
+
+Route::get('/BD_Admin/factory/assign_raw_materials', 'FactoryManagementController@assignRawMaterials')->name('factory.assignRawMaterials');
+
+Route::get('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@addShipmentInfo')->name('factory.addShipmentInfo');
+
+Route::get('/BD_Admin/factory/factory_info', 'FactoryManagementController@factoryInfo')->name('factory.factoryInfo');
+
 });
 
  /*

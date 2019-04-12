@@ -17,9 +17,16 @@ class LoginController extends Controller
                     ->where('pass','=',$req->pass)
                     ->first();
         if($user){
-            session(['user' => $user]);
-            return redirect()->route('seller.index');
-        }else{
+            if($user->location == "India" && $user->type == 'Admin'){
+                session(['user' => $user]);
+                return redirect()->route('seller.index');
+            }
+            else if($user->location == "Bangladesh" && $user->type == 'Admin'){
+                session(['user' => $user]);
+                return redirect()->route('bdAdmin.index');
+            }
+        }
+        else{
             return back()->with('success', 'Invalid User!');
         }  
     }
