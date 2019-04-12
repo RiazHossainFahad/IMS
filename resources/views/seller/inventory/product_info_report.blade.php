@@ -47,10 +47,15 @@ th {
                                 </tr>
                             </thead>
                             <tbody>
+                                @for ($i = 0; $i < count($productInfo); $i++)
+                                    
                                 <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>2019</td>
+                                    <td>{{$i+1}}</td>
+                                    <td>{{$productInfo[$i]->product_name}}</td>
+                                    <td>{{$productInfo[$i]->available_product}}</td>
+                                </tr>
+                                
+                                @endfor
                             </tbody>
                         </table>
 

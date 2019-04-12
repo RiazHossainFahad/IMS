@@ -57,12 +57,10 @@ class InventoryController extends Controller
     }
 
     public function productInfoReport(){
-        // $product = DB::table('daily_sells')
-        //         ->select('product_name', DB::raw('SUM(quantity) as total_sales'))
-        //         ->groupBy('product_name')
-        //         ->get();
-        // print_r($product);
-                 return view('seller.inventory.product_info_report');
+        $products = DB::table('products')
+                ->get();
+
+                 return view('seller.inventory.product_info_report')->withProductInfo($products);
     }
 
     public function shipmentReport(){
