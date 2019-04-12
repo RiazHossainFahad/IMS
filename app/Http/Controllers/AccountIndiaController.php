@@ -22,24 +22,43 @@ class AccountIndiaController extends Controller
     }
 
     public function storeDailySells(AccountIndiaRequest $req){
+        //check available product
+        $aa_product = DB::table('products')
+                                    ->select('available_product')
+                                    ->where('product_name','=',$req->product_name)
+                                    ->first();
 
-        $total_amount = ($req->quantity*$req->rate);
+        //check available product < than quantity sells
+        if($aa_product->available_product > $req->quantity){
+            $ap = $aa_product->available_product - $req->quantity;
 
-        $status = DB::table('daily_sells')->insert([
-            'sells_point_name' => $req->sells_point_name,
-            'product_name' => $req->product_name,
-            'quantity' => $req->quantity,
-            'rate' => $req->rate,
-            'customer_name' => $req->customer_name,
-            'amount_paid' => $req->amount_paid,
-            'amount_left' => $req->amount_left,
-            'total_amount' => $total_amount
-        ]);
+            DB::table('products')
+                ->where('product_name',$req->product_name)
+                ->update([
+                    'available_product'=>$ap
+                ]);
 
-        if($status)
-        return back()->with('success','Daily sells stored successfully!!');
-        else
-        return back()->with('success','Oops!!Error occured while storing Daily sells!!');
+            $total_amount = ($req->quantity*$req->rate);
+
+            $status = DB::table('daily_sells')->insert([
+                'sells_point_name' => $req->sells_point_name,
+                'product_name' => $req->product_name,
+                'quantity' => $req->quantity,
+                'rate' => $req->rate,
+                'customer_name' => $req->customer_name,
+                'amount_paid' => $req->amount_paid,
+                'amount_left' => $req->amount_left,
+                'total_amount' => $total_amount
+            ]);
+    
+            if($status)
+            return back()->with('success','Daily sells stored successfully!!');
+            else
+            return back()->with('success','Oops!!Error occured while storing Daily sells!!');
+        }
+        else {
+            return back()->with('success','Not enough available product <br> Add product first!!');
+        }
     }
 
         /**
