@@ -15,7 +15,10 @@ class AccountIndiaController extends Controller
      */
     public function index()
     {
-       return view('seller.account.add_daily_sells'); 
+        $products = DB::table('products')
+                        ->select('product_name')
+                        ->get();
+          return view('seller.account.add_daily_sells')->with('product',$products); 
     }
 
     public function storeDailySells(AccountIndiaRequest $req){

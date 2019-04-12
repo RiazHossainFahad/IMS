@@ -25,11 +25,26 @@
                         <h3 style="text-align:center" class="panel-title">Add Product To Inventory</h3>
                     </div>
                     <div class="panel-body">
-                        <form method="post">
 
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="product_id" placeholder="Product id">
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                             <button type="button" class="close" data-dismiss="alert">×</button>
+                             <ul>
+                              @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                              @endforeach
+                             </ul>
                             </div>
+                           @endif
+                           @if ($message = Session::get('success'))
+                           <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                   <strong>{{ $message }}</strong>
+                           </div>
+                           @endif
+
+                        <form method="post">
+                            @csrf
 
                             <div class="form-group">
                                 <input type="text" class="form-control" name="product_name" placeholder="Product name">

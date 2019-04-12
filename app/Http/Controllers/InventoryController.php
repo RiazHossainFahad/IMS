@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InventoryController extends Controller
 {
@@ -12,6 +13,24 @@ class InventoryController extends Controller
 
     public function addProduct(){
         return view('seller.inventory.add_product');
+    }
+
+    public function storeProduct(Request $req){
+        $req->validate([
+            'product_name'=>'required',
+            'quantity'=>'required|numeric'
+        ]);
+
+        $status = DB::table('products')
+                        ->insert([
+                            'product_name' => $req->product_name,
+                            'quantity' => $req->quantity
+                        ]);
+
+        if($status)
+        return back()->with('success','Product added Successfully.');
+        else
+        return back()->with('success','Oops!!Error occured while adding product!!');
     }
 
     public function productInfoReport(){
