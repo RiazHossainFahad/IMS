@@ -42,6 +42,7 @@ Route::get('/seller/account/money_transfer', 'AccountIndiaController@moneyTransf
  */
 
  Route::get('/seller/inventory/confirm_shipment', 'InventoryController@confrimShipment')->name('inventory.confrimShipment');
+ Route::get('/seller/inventory/confirm_shipment/{id}', 'InventoryController@updateShipment')->name('inventory.updateShipment');
  
  Route::get('/seller/inventory/add_product', 'InventoryController@addProduct')->name('inventory.addProduct');
  Route::post('/seller/inventory/add_product', 'InventoryController@storeProduct');

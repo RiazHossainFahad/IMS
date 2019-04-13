@@ -37,26 +37,35 @@ th {
                         <h3 style="text-align:center" class="panel-title">Shipment Report</h3>
                     </div>
                     <div class="panel-body">
+                        @if (count($shipmentList)>0)
 
                         <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Sl No</th>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Send Date</th>
-                                    <th>Receive Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>2019</td>
-                                    <td>10/04/2019</td>
-                                    <td>10/04/2019</td>
-                            </tbody>
-                        </table>
+                                <thead>
+                                    <tr>
+                                        <th>Sl No</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Send Date</th>
+                                        <th>Receive Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for ($i = 0; $i < count($shipmentList); $i++)
+                                    <tr>
+                                        <td>{{$i+1}}</td>
+                                        <td>{{$shipmentList[$i]->product_name}}</td>
+                                        <td>{{$shipmentList[$i]->quantity}}</td>
+                                        <td>{{$shipmentList[$i]->send_date}}</td>
+                                        <td>{{$shipmentList[$i]->receive_date}}</td>
+                                    </tr>
+                                    @endfor
+                                </tbody>
+                            </table>
+
+                        @else
+                            <h3>No shipment list found</h3>
+                        @endif
+
 
 
                         <div class="col-xs-12">

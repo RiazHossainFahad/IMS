@@ -62,8 +62,7 @@ class="active"
                         </div>
 
                         <div class="form-group">
-                            <input type="number" min="1" class="form-control" name="quantity" placeholder="Quantity"
-                                value="{{old('quantity')}}">
+                            <input type="number" min="1" class="form-control" name="quantity" placeholder="Quantity" value="{{old('quantity')}}">
                         </div>
 
                         <div class="form-group">
