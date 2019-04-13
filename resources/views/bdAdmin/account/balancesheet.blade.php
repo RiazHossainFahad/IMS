@@ -36,7 +36,7 @@ label {
                         <h4> <span class="label label-info">Total Expense:</span></h4>
                     </div>
                     <div class="col-xs-3 col-xs-offset-5 col-sm-offset-3">
-                        <h4><span>1000</span></h4>
+                        <h4><span>{{$totalExpense}}</span></h4>
                     </div>
                     <br>
                     <br>
@@ -45,7 +45,7 @@ label {
                         <h4> <span class="label label-info">Total Receive:</span></h4>
                     </div>
                     <div class="col-xs-3 col-xs-offset-5 col-sm-offset-3">
-                        <h4><span>1000</span></h4>
+                        <h4><span>{{$totalReceive}}</span></h4>
                     </div>
                     <br>
                     <br>
@@ -55,7 +55,7 @@ label {
                         <h4> <span class="label label-info">Cash In Hand:</span></h4>
                     </div>
                     <div class="col-xs-3 col-xs-offset-5 col-sm-offset-3">
-                        <h4><span>0000</span></h4>
+                        <h4><span>{{$cash}}</span></h4>
                     </div>
                     <br>
                     <br>

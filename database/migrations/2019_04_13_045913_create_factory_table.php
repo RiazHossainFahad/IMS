@@ -17,7 +17,7 @@ class CreateFactoryTable extends Migration
             $table->bigIncrements('id');
             $table->string('factory_name');
             $table->string('factory_address');
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
