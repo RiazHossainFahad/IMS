@@ -79,7 +79,8 @@ class FactoryManagementController extends Controller
         ->insert([
             'product_name' => $req->product_name,
             'quantity' => $req->quantity,
-            'send_date' => $req->send_date
+            'send_date' => $req->send_date,
+            'receive_date' => $req->send_date,
         ]);
 
         if($status)

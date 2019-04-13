@@ -18,6 +18,7 @@ class CreateShipementTable extends Migration
             $table->string('product_name');
             $table->integer('quantity');
             $table->date('send_date');
+            $table->date('receive_date');
             $table->integer('status')->default(0);
             $table->timestamps();
         });
