@@ -47,8 +47,8 @@ margin-top:1%;
     <li class="dropdown @yield('accountModule')">
      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account Module<b class="caret"></b></a>
      <ul class="dropdown-menu">
-       <li @yield('mrfi')><a href="#">Money Receive from India</a></li>
-       <li @yield('bs')><a href="#">Balance Sheet</a></li>
+     <li @yield('mrfi')><a href="{{route('account.showMoneyRecipt')}}">Money Receive from India</a></li>
+       <li @yield('bs')><a href="{{route('account.showBalanceSheet')}}">Balance Sheet</a></li>
      </ul>
     </li>
 

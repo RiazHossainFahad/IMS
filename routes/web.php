@@ -67,12 +67,25 @@ Route::get('/BD_Admin', 'BDAdminController@index')->name('bdAdmin.index');
 |
  */
 Route::get('/BD_Admin/factory/add_factory', 'FactoryManagementController@addFactory')->name('factory.addFactory');
+Route::post('/BD_Admin/factory/add_factory', 'FactoryManagementController@storeFactory');
 
 Route::get('/BD_Admin/factory/assign_raw_materials', 'FactoryManagementController@assignRawMaterials')->name('factory.assignRawMaterials');
+Route::post('/BD_Admin/factory/assign_raw_materials', 'FactoryManagementController@storeAssignedMaterials');
 
 Route::get('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@addShipmentInfo')->name('factory.addShipmentInfo');
+Route::get('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@storeShipmentInfo');
 
 Route::get('/BD_Admin/factory/factory_info', 'FactoryManagementController@factoryInfo')->name('factory.factoryInfo');
+
+ /*
+|--------------------------------------------------------------------------
+| Bangladesh Admin-Account module Routes
+|--------------------------------------------------------------------------
+|
+ */
+Route::get('/BD_Admin/account/show_money_recipt', 'BDAccountController@showMoneyRecipt')->name('account.showMoneyRecipt');
+
+Route::get('/BD_Admin/account/show_balance_sheet', 'BDAccountController@showBalanceSheet')->name('account.showBalanceSheet');
 
 });
 
