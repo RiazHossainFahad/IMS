@@ -73,7 +73,7 @@ Route::get('/BD_Admin/factory/assign_raw_materials', 'FactoryManagementControlle
 Route::post('/BD_Admin/factory/assign_raw_materials', 'FactoryManagementController@storeAssignedMaterials');
 
 Route::get('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@addShipmentInfo')->name('factory.addShipmentInfo');
-Route::get('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@storeShipmentInfo');
+Route::post('/BD_Admin/factory/add_shipment_info', 'FactoryManagementController@storeShipmentInfo');
 
 Route::get('/BD_Admin/factory/factory_info', 'FactoryManagementController@factoryInfo')->name('factory.factoryInfo');
 

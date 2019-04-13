@@ -68,11 +68,29 @@ class FactoryManagementController extends Controller
         return view('bdAdmin.factory.add_shipment_info');
     }
 
-    public function storeShipmentInfo(){
-        
+    public function storeShipmentInfo(Request $req){
+        $req->validate([
+            'product_name'=>'required',
+            'quantity'=>'required|numeric',
+            'send_date'=>'required|date'
+        ]);
+
+        $status = DB::table('shipment')
+        ->insert([
+            'product_name' => $req->product_name,
+            'quantity' => $req->quantity,
+            'send_date' => $req->send_date
+        ]);
+
+        if($status)
+            return back()->with('success','Shipment added Successfully.');
+        else
+            return back()->with('success','Oops!!Error occured while adding shipment!!');
     }
 
     public function factoryInfo(){
-        return view('bdAdmin.factory.factory_info');
+
+        $factory = DB::table('factory')->get();
+        return view('bdAdmin.factory.factory_info')->withFactoryInfo($factory);
     }
 }

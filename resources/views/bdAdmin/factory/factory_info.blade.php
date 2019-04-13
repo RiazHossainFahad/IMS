@@ -40,7 +40,7 @@ td {
                         <h3 style="text-align:center" class="panel-title">Factory Informations</h3>
                     </div>
                     <div class="panel-body">
-
+                            @if (count($factoryInfo))
 
                         <table class="table table-responsive">
                             <thead>
@@ -48,22 +48,27 @@ td {
                                     <th>Sl No</th>
                                     <th>Factory Name</th>
                                     <th>Factory Address</th>
-                                    <th>Factory Phone No</th>
+                                    <th>Factory Phone Number</th>
                                     <th>Working Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>XYZ</td>
-                                    <td>123456789</td>
-                                    <td>Active</td>
-                                </tr>
+                                    @for ($i = 0; $i < count($factoryInfo); $i++)
+                                    
+                                    <tr>
+                                        <td>{{$i+1}}</td>
+                                        <td>{{$factoryInfo[$i]->factory_name}}</td>
+                                        <td>{{$factoryInfo[$i]->factory_address}}</td>
+                                        <td>{{$factoryInfo[$i]->phone_number}}</td>
+                                        <td><label class="label label-success">Active</label></td>
+                                    </tr>
+                                    
+                                    @endfor
                             </tbody>
                         </table>
-
-
+                        @else 
+                        <h2>No Factory Found</h2>
+                        @endif
                         <div class="col-xs-12">
                             <a href="http://" class="btn btn-block btn-danger">Back</a>
                         </div>
