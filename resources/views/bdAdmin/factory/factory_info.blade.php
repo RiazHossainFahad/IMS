@@ -70,7 +70,7 @@ td {
                         <h2>No Factory Found</h2>
                         @endif
                         <div class="col-xs-12">
-                            <a href="http://" class="btn btn-block btn-danger">Back</a>
+                            <a href="{{route('bdAdmin.index')}}" class="btn btn-block btn-danger">Back</a>
                         </div>
 
 

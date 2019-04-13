@@ -68,7 +68,7 @@
 
                             <div class="form-group">
 
-                                <a href="#" class="btn btn-large btn-block btn-danger">Back</a>
+                                <a href="{{route('seller.index')}}" class="btn btn-large btn-block btn-danger">Back</a>
 
                             </div>
                         </form>
